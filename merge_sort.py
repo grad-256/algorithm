@@ -1,5 +1,8 @@
 # マージソート
 
+list_a = [5, 7, 6, 4, 5, 1, 2, 3, 2, 2, 9, 1, 4]
+
+
 def merge_sort(arr):
     if len(arr) > 1:
         res = []  # 返り値の配列
@@ -40,5 +43,33 @@ def merge_sort(arr):
         return arr
 
 
-list_a = [5, 7, 6, 4, 5, 1, 2, 3, 2, 2, 9, 1, 4]
 print(merge_sort(list_a))
+
+
+def merge_sort02(data):
+    if len(data) <= 1:
+        return data
+
+    # 分割操作
+    mid = len(data)//2  # 真ん中を計算
+    left = merge_sort02(data[:mid])  # 再帰で前半を分割してleftに
+    right = merge_sort02(data[mid:])  # 再帰で後半を分割してrightに
+
+    merge, l, r = [], 0, 0  # mergeに統合
+
+    # 統合操作
+    while l < len(left) and r < len(right):  # leftとrightの両方に要素がある場合
+        if left[l] <= right[r]:  # 左側<=右側の場合
+            merge.append(left[l])  # 左側をmergeに加える
+            l += 1
+        else:  # 左側>右側
+            merge.append(right[r])  # 右側をmergeに加える
+            r += 1
+    if l < len(left):  # 左側が余った場合に残りを追加
+        merge.extend(left[l:])  # extend 末尾に別のリストやタプルを結合
+    elif r < len(right):  # 右側が余った場合に残りを追加
+        merge.extend(right[r:])
+    return merge
+
+
+print(merge_sort02(list_a))
