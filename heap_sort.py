@@ -59,3 +59,4 @@ if __name__ == '__main__':
     print('未ソート', array)  # 未ソート [17, 72, 97, 8, 32, 15, 63, 97, 57, 60]
     heap_sort(array)
     print('ソート済み', array)  # ソート済み [8, 15, 17, 32, 57, 60, 63, 72, 97, 97]
+ # https://en.wikipedia.org/wiki/Heapsort#/media/File:Heapsort-example.gif 参考資料
